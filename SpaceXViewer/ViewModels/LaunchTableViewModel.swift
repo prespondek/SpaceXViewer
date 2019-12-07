@@ -64,29 +64,4 @@ class LaunchViewModel {
     func update() {
         try! mLaunches.onNext(mLaunches.value())
     }
-    
-    func numberOfSections() -> Int {
-        
-        switch sort {
-        case .alphabetical:
-            return 26
-        case .year:
-            var x : [Launch] = []
-            try! x = mLaunches.value().reduce(into: [], { result, launch in
-                if result.firstIndex(where: { x in
-                    x.launchYear == launch.launchYear
-                }) != -1 {
-                    result + [launch]
-                }
-                })
-            return x.count
-        default:
-            return 0
-        }
-    }
-    
-    func titleForHeaderInSection(_ section: Int ) ->String {
-        return "boo"
-    }
-
 }

@@ -41,7 +41,7 @@ class RocketViewController : UIViewController, UITextViewDelegate {
     
     func recieveLaunchDetails(data: LaunchDetail) {
         attributedString += String(format:
-            "Flight Number: %d\nMission Name: %@\nLaunch Time: %@\nDetails: %@", String(data.flightNum ?? 0), (data.missionName ?? "???") , Date(timeIntervalSince1970: data.launchDate ?? 0).description, (data.details ?? "???"))
+            "Flight Number: %d\n\nMission Name: %@\n\nLaunch Time: %@\n\nDetails: %@\n\n", data.flightNum ?? 0, (data.missionName ?? "???") , Date(timeIntervalSince1970: data.launchDate ?? 0).description, (data.details ?? "???"))
         if let rocketId = data.rocket?.id {
             if let rocket = viewModel.fetchRocket(rocketId: rocketId) {
                 rocket.subscribe({[weak self] data in
@@ -58,7 +58,7 @@ class RocketViewController : UIViewController, UITextViewDelegate {
     
     func recieveRocketDetails(data: RocketDetail) {
         attributedString += String(format:
-            "Rocket Name: %@\n", (data.name ?? "???"))
+            "Rocket Name: %@\n\n", (data.name ?? "???"))
         var attrib = NSMutableAttributedString(string: attributedString)
         if let linkUrl = data.link {
             attributedString += "Wikipedia: "

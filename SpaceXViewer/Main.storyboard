@@ -45,26 +45,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LaunchCell" id="4ja-UR-fDO" customClass="LaunchTableViewCell" customModule="SpaceXViewer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="45"/>
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="45.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4ja-UR-fDO" id="4Ow-X5-3wZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-2i-kSs" userLabel="Launch Number">
-                                            <rect key="frame" x="20" y="11" width="42" height="23"/>
+                                            <rect key="frame" x="20" y="11" width="42" height="23.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36w-Sj-I7I" userLabel="Mission Name">
-                                            <rect key="frame" x="70" y="11" width="293" height="23"/>
+                                            <rect key="frame" x="70" y="11" width="292.5" height="23.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GmB-Ki-kIh">
-                                            <rect key="frame" x="371" y="10.5" width="23" height="24.5"/>
+                                            <rect key="frame" x="370.5" y="10.5" width="23.5" height="25"/>
                                             <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="GmB-Ki-kIh" secondAttribute="height" multiplier="1:1" id="bZ6-nW-AMI"/>
@@ -119,9 +119,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fn6-a1-gww">
-                                <rect key="frame" x="8" y="53" width="398" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fn6-a1-gww">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -130,6 +129,12 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Fn6-a1-gww" firstAttribute="top" secondItem="gf5-nI-PEV" secondAttribute="topMargin" id="6Gi-eZ-gbO"/>
+                            <constraint firstItem="Fn6-a1-gww" firstAttribute="leading" secondItem="nPw-DR-1NP" secondAttribute="leading" id="A1y-I5-3Fe"/>
+                            <constraint firstItem="Fn6-a1-gww" firstAttribute="bottom" secondItem="nPw-DR-1NP" secondAttribute="bottom" id="DA9-dk-cyt"/>
+                            <constraint firstItem="Fn6-a1-gww" firstAttribute="trailing" secondItem="nPw-DR-1NP" secondAttribute="trailing" id="ohG-GV-zNG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nPw-DR-1NP"/>
                     </view>
                     <navigationItem key="navigationItem" id="pcS-cr-DYZ"/>

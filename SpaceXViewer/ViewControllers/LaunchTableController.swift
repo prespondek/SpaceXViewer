@@ -18,13 +18,31 @@ class LaunchTableController: UITableViewController {
     
     private let disposeBag = DisposeBag()
     
-    var indicator = UIActivityIndicatorView()
+    var indicator = NetworkIndicatorView()
+    
+    var error : Error? = nil
         
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func viewDidLoad() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(reconnect(_:)),
+                                  for: .valueChanged)
+        
+        // called if there is a network error
+        viewModel.errors.subscribe({ data in
+            if let err = data.element {
+                self.error = err
+                self.indicator.error()
+                self.refreshControl?.endRefreshing()
+            }
+        }).disposed(by: disposeBag)
+        
+        // make initial network call
+        reconnect(self)
+        
         let dataSource = RxTableViewSectionedReloadDataSource<LaunchSection>(
           configureCell: { dataSource, tableView, indexPath, data in
             let cell = tableView.dequeueReusableCell(withIdentifier: "LaunchCell", for: indexPath) as! LaunchTableViewCell
@@ -36,8 +54,8 @@ class LaunchTableController: UITableViewController {
             dataSource.sectionModels[index].header
         }
         
-        
-        let sections = viewModel.launches.map ({ launch -> [LaunchSection] in
+        let sections = viewModel.launches.map ({ [weak self] launch -> [LaunchSection] in
+            guard let self = self else { return [] }
             var sections: [LaunchSection] = []
             var map = Dictionary<String,[Launch]>()
             switch self.viewModel.sort {
@@ -65,35 +83,43 @@ class LaunchTableController: UITableViewController {
             map.forEach({ section in
                 sections.append(LaunchSection(header: section.key, items: section.value))
             })
-            self.indicator.hidesWhenStopped = true
-            self.indicator.stopAnimating()
+            self.refreshControl?.endRefreshing()
+            if self.error == nil {
+                self.indicator.stop()
+            }
             return sections.sorted { left, right in
                 left.header < right.header
             }
         })
         sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
-        indicator = UIActivityIndicatorView(frame: CGRect(x:0,y: 0,width: 40,height: 40))
-        indicator.style = UIActivityIndicatorView.Style.medium
-        indicator.center = self.view.center
-        self.view.addSubview(indicator)
-        indicator.startAnimating()
+        indicator = NetworkIndicatorView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        tableView.backgroundView = indicator
+        indicator.attach(view: tableView)
+        indicator.start()
+    }
+
+    @objc func reconnect ( _ sender : Any) {
+        error = nil
+        viewModel.reconnect()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let options = segue.destination as? OptionsViewController {
             options.setup(sort: viewModel.sort, filter: viewModel.filter)
             options.viewModel.filter.subscribe({ [weak self] event in
+                guard let self = self else { return }
                 if let method = event.element {
-                    self?.viewModel.filter = method
-                    self?.viewModel.update()
+                    self.viewModel.filter = method
+                    self.viewModel.update()
                 }
             }).disposed(by: disposeBag)
             
             options.viewModel.sort.subscribe({ [weak self] event in
+                guard let self = self else { return }
                 if let method = event.element {
-                    self?.viewModel.sort = method
-                    self?.viewModel.update()
+                    self.viewModel.sort = method
+                    self.viewModel.update()
                 }
             }).disposed(by: disposeBag)
         } else if let rocket = segue.destination as? RocketViewController {

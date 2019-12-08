@@ -39,70 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1F4AD282-6A3B-494F-8FAD-B570932C0DFE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpaceXViewer/ViewModels/LaunchTableViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "numberOfSections()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1F4AD282-6A3B-494F-8FAD-B570932C0DFE - 84530bb1f2874da9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (inout Swift.Array&lt;SpaceXViewer.Launch&gt;, SpaceXViewer.Launch) -&gt; () in SpaceXViewer.LaunchViewModel.numberOfSections() -&gt; Swift.Int"
-                  moduleName = "SpaceXViewer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/prespondek/Projects/SpaceXViewer/SpaceXViewer/ViewModels/LaunchTableViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "206">
-               </Location>
-               <Location
-                  uuid = "1F4AD282-6A3B-494F-8FAD-B570932C0DFE - 643cdf5a92f40abf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SpaceXViewer.Launch) -&gt; Swift.Bool in closure #1 (inout Swift.Array&lt;SpaceXViewer.Launch&gt;, SpaceXViewer.Launch) -&gt; () in SpaceXViewer.LaunchViewModel.numberOfSections() -&gt; Swift.Int"
-                  moduleName = "SpaceXViewer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/prespondek/Projects/SpaceXViewer/SpaceXViewer/ViewModels/LaunchTableViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "35">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "04202F3F-33F6-4AEB-BE4A-E02049996ED4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpaceXViewer/ViewControllers/LaunchTableController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B4BA0B2C-9478-4DA1-B000-68CABACAAABF"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -129,6 +65,22 @@
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "init(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C24B2C86-0CF4-4A51-8228-B3C42DAB050E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceXViewer/ViewControllers/RocketViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "recieveLaunchDetails(data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -13,24 +13,31 @@ import RxRelay
 
 class LaunchViewModel {
     var launches : Observable<[Launch]> {
-        return mLaunches.asObservable().map { [weak self] arr in
+        return mLaunches.map { [weak self] arr in
             guard let this = self else { return [] }
             return this.filter(array:
                 this.sort(array: arr, method: this.sort),
                                method: this.filter)
         }
     }
-    private let mLaunches = BehaviorSubject<[Launch]>(value: [])
+    let errors = PublishRelay<Error>()
+    private let mLaunches = BehaviorRelay<[Launch]>(value: [])
     let disposeBag = DisposeBag()
 
     var filter : Options.FilterMethod = .none
     var sort : Options.SortMethod = .none
     
     init() {
+        reconnect()
+    }
+    
+    func reconnect() {
         DataStore.instance.fetchLaunches()?.subscribe({ [weak self] data in
             guard let this = self else { return }
-            if let value = data.element {
-                this.mLaunches.onNext(value)
+            if let error = data.error {
+                this.errors.accept(error)
+            } else if let value = data.element {
+                this.mLaunches.accept(value)
             }
         }).disposed(by: disposeBag)
     }
@@ -62,6 +69,7 @@ class LaunchViewModel {
     }
     
     func update() {
-        try! mLaunches.onNext(mLaunches.value())
+        mLaunches.accept(mLaunches.value)
     }
+
 }

@@ -19,24 +19,27 @@ class RocketViewController : UIViewController, UITextViewDelegate {
     
     var flightNumber = 0
     
-    var indicator = UIActivityIndicatorView()
+    var indicator = NetworkIndicatorView()
     
     var attributedString = ""
     
     override func viewDidLoad() {
         if let launch = viewModel.fetchLaunch(flightNumber: flightNumber) {
             launch.subscribe({ [weak self] data in
-                guard let this = self else { return }
+                guard let self = self else { return }
                 if let launchdetail = data.element {
-                    this.recieveLaunchDetails(data: launchdetail)
+                    self.recieveLaunchDetails(data: launchdetail)
+                } else if data.error != nil {
+                    self.textOutput.isHidden = true
+                    self.indicator.error()
                 }
             }).disposed(by: disposeBag)
         }
-        indicator = UIActivityIndicatorView(frame: CGRect(x:0,y: 0,width: 40,height: 40))
-        indicator.style = UIActivityIndicatorView.Style.medium
+        indicator = NetworkIndicatorView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
         indicator.center = self.view.center
-        self.view.addSubview(indicator)
-        indicator.startAnimating()
+        view.addSubview(indicator)
+        indicator.bottomLabel.text = ""
+        indicator.start()
     }
     
     func recieveLaunchDetails(data: LaunchDetail) {
@@ -45,11 +48,12 @@ class RocketViewController : UIViewController, UITextViewDelegate {
         if let rocketId = data.rocket?.id {
             if let rocket = viewModel.fetchRocket(rocketId: rocketId) {
                 rocket.subscribe({[weak self] data in
-                    guard let this = self else { return }
+                    guard let self = self else { return }
                     if let rocketdetail = data.element {
-                        this.recieveRocketDetails(data: rocketdetail)
-                        this.indicator.hidesWhenStopped = true
-                        this.indicator.stopAnimating()
+                        self.recieveRocketDetails(data: rocketdetail)
+                    } else if data.error != nil {
+                        self.textOutput.isHidden = true
+                        self.indicator.error()
                     }
                     }).disposed(by: disposeBag)
             }
@@ -70,6 +74,8 @@ class RocketViewController : UIViewController, UITextViewDelegate {
         attrib.addAttribute(.font, value: textOutput.font!, range: NSRange(location: 0,length: attributedString.count))
     
         textOutput.attributedText = attrib
+        self.indicator.stop()
+        self.textOutput.isHidden = false
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {

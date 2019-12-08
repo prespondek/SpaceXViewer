@@ -39,6 +39,8 @@
 		C6DC66E2239B9AFC0068D4CB /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DC66E1239B9AFC0068D4CB /* LaunchDetail.swift */; };
 		C6DC66E4239BA1740068D4CB /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DC66E3239BA1740068D4CB /* RocketViewController.swift */; };
 		C6DC66E6239BB31E0068D4CB /* RocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DC66E5239BB31E0068D4CB /* RocketViewModel.swift */; };
+		C6DC66E8239C63F30068D4CB /* NetworkIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6DC66E7239C63F30068D4CB /* NetworkIndicator.xib */; };
+		C6DC66EC239C70CF0068D4CB /* NetworkIndicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DC66EB239C70CF0068D4CB /* NetworkIndicationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +112,8 @@
 		C6DC66E1239B9AFC0068D4CB /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		C6DC66E3239BA1740068D4CB /* RocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
 		C6DC66E5239BB31E0068D4CB /* RocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewModel.swift; sourceTree = "<group>"; };
+		C6DC66E7239C63F30068D4CB /* NetworkIndicator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkIndicator.xib; sourceTree = "<group>"; };
+		C6DC66EB239C70CF0068D4CB /* NetworkIndicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 				C65FE4692398A460002E7FBA /* Info.plist */,
 				C65FE4632398A460002E7FBA /* Preview Content */,
 				C65FE48B2398A4EA002E7FBA /* Main.storyboard */,
+				C6DC66E7239C63F30068D4CB /* NetworkIndicator.xib */,
 			);
 			path = SpaceXViewer;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			children = (
 				C65FE4B92399E777002E7FBA /* LaunchTableViewCell.swift */,
 				C6271745239A1DE300BE5752 /* OptionsTableViewCell.swift */,
+				C6DC66EB239C70CF0068D4CB /* NetworkIndicationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6DC66E8239C63F30068D4CB /* NetworkIndicator.xib in Resources */,
 				C65FE48C2398A4EA002E7FBA /* Main.storyboard in Resources */,
 				C65FE4682398A460002E7FBA /* LaunchScreen.storyboard in Resources */,
 				C65FE4652398A460002E7FBA /* Preview Assets.xcassets in Resources */,
@@ -414,6 +421,7 @@
 				C65FE49F23990521002E7FBA /* DataStore.swift in Sources */,
 				C6DC66E4239BA1740068D4CB /* RocketViewController.swift in Sources */,
 				C65FE49B2398F76D002E7FBA /* NetworkApi.swift in Sources */,
+				C6DC66EC239C70CF0068D4CB /* NetworkIndicationView.swift in Sources */,
 				C6DC66E6239BB31E0068D4CB /* RocketViewModel.swift in Sources */,
 				C6DC66D3239B0F370068D4CB /* OptionsViewModel.swift in Sources */,
 				C6DC66D6239B0FA20068D4CB /* Options.swift in Sources */,

@@ -124,7 +124,7 @@ class LaunchTableController: UITableViewController {
             }).disposed(by: disposeBag)
         } else if let rocket = segue.destination as? RocketViewController {
             if let cell = sender as? LaunchTableViewCell {
-                rocket.flightNumber = cell.launch?.flightNum ?? 0
+                rocket.flightNumber = cell.launch?.flightNumber ?? 0
             }
         }
     }

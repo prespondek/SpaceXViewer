@@ -52,7 +52,7 @@ class LaunchViewModel {
             { $0.launchYear ?? "0" < $1.launchYear ?? "0" })
         default:
             return array.sorted(by:
-            { $0.flightNum ?? 0 < $1.flightNum ?? 0 })
+            { $0.flightNumber ?? 0 < $1.flightNumber ?? 0 })
         }
     }
     

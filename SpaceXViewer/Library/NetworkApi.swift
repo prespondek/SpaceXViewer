@@ -21,7 +21,9 @@ class NetworkApi {
                    print(jsonString)
                 }*/
                 do {
-                    let model = try JSONDecoder().decode(T.self, from: data ?? Data())
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let model = try decoder.decode(T.self, from: data ?? Data())
                     observer.onNext( model )
                 } catch let error {
                     observer.onError(error)

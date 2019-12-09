@@ -16,7 +16,7 @@ class LaunchTableViewCell: UITableViewCell {
     var launch: Launch? = nil {
         didSet {
             guard let field = launch else { return }
-            if let flightNum = field.flightNum {
+            if let flightNum = field.flightNumber {
                 launchNumber.text = String(flightNum)
             } else {
                 launchNumber.text = "?"
